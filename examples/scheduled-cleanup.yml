@@ -17,5 +17,3 @@ jobs:
         uses: jcantosz/stop-pr-jobs@main
         with:
           branch: main
-          # Optionally enable dry run mode first to test
-          # dry_run: true
