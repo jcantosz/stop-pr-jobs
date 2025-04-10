@@ -1,0 +1,32 @@
+{
+  "name": "stop-pr-jobs",
+  "version": "1.0.0",
+  "description": "GitHub Action to cancel running workflow jobs for open PRs",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "node src/dev.js",
+    "build": "ncc build index.js -o dist --source-map --license licenses.txt"
+  },
+  "keywords": [
+    "github",
+    "actions",
+    "workflow",
+    "cancel"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@actions/core": "^1.11.1",
+    "@actions/github": "^6.0.0",
+    "@octokit/auth-app": "^7.2.1",
+    "@octokit/core": "^6.1.5",
+    "@octokit/plugin-paginate-rest": "^12.0.0",
+    "@octokit/plugin-retry": "^7.2.1",
+    "@octokit/plugin-throttling": "^9.6.1",
+    "node-fetch": "^3.3.2"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

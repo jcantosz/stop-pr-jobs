@@ -1,0 +1,23 @@
+name: Manual PR Job Cleanup
+
+on:
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: "Target branch to check PRs against"
+        required: true
+        default: "main"
+        type: string
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    permissions:
+      actions: write
+      checks: read
+      pull-requests: read
+    steps:
+      - name: Cancel PR Jobs
+        uses: jcantosz/stop-pr-jobs@main
+        with:
+          branch: ${{ github.event.inputs.branch }}

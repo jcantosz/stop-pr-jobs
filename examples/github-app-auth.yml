@@ -1,0 +1,20 @@
+name: PR Job Cleanup with GitHub App
+
+on:
+  schedule:
+    # Run every 20 minutes
+    - cron: "*/20 * * * *"
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cancel PR Jobs
+        uses: jcantosz/stop-pr-jobs@main
+        with:
+          branch: main
+          app_id: ${{ secrets.APP_ID }}
+          private_key: ${{ secrets.PRIVATE_KEY }}
+          installation_id: ${{ secrets.INSTALLATION_ID }}
+          # Optional: specify a custom repository to clean up
+          # repository: other-org/other-repo
