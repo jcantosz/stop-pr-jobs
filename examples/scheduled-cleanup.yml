@@ -1,0 +1,21 @@
+name: Scheduled PR Job Cleanup
+
+on:
+  schedule:
+    # Run every 15 minutes
+    - cron: "*/15 * * * *"
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    permissions:
+      actions: write
+      checks: read
+      pull-requests: read
+    steps:
+      - name: Cancel PR Jobs
+        uses: jcantosz/stop-pr-jobs@main
+        with:
+          branch: main
+          # Optionally enable dry run mode first to test
+          # dry_run: true

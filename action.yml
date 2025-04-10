@@ -1,0 +1,37 @@
+name: "Stop PR Jobs"
+description: "Cancels running workflow jobs for open PRs targeting a specified branch"
+author: "SNC"
+
+branding:
+  icon: "slash"
+  color: "red"
+
+inputs:
+  branch:
+    description: "Base branch to check for PRs against"
+    required: true
+    default: "main"
+  github_token:
+    description: "GitHub token with appropriate permissions"
+    required: false
+    default: ${{ github.token }}
+  app_id:
+    description: "GitHub App ID (if using app authentication instead of token)"
+    required: false
+  private_key:
+    description: "GitHub App private key (if using app authentication)"
+    required: false
+  installation_id:
+    description: "GitHub App installation ID (if using app authentication)"
+    required: false
+  api_url:
+    description: "Custom GitHub API URL if using GitHub Enterprise"
+    required: false
+  repository:
+    description: "Repository in the format owner/repo"
+    required: false
+    default: ${{ github.repository }}
+
+runs:
+  using: "node20"
+  main: "dist/index.js"
